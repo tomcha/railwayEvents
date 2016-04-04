@@ -36,7 +36,6 @@ module RssMaker
             f.read =~ /<p class="content-text".+?>(.+?)<\/p>/
             @event_description = $1
           end
-          puts @event_description
 
           @feed_seeds.push ({
             event_URL: event_URL,
@@ -78,7 +77,6 @@ module RssMaker
           a = seed[:event_name]
           item.title = seed[:event_name].force_encoding('UTF-8') + ":" +seed[:event_date].force_encoding('UTF-8')
           item.description = seed[:event_description] 
-#          item.date = seed[:eventDate].force_encoding('UTF-8')
         end
       end
       a.to_s
