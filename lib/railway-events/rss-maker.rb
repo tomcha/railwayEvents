@@ -5,6 +5,7 @@ require 'uri'
 require 'rss'
 require 'date'
 require 'open-uri'
+require 'yaml'
 
 module RssMaker
   class FeedSeeds
@@ -66,11 +67,14 @@ module RssMaker
     end
 
     def makeFeeds
-      a = RSS::Maker.make("2.0") do |maker|
-        maker.channel.about = "http://tomch.net/railwayEvents/index.rdf"
+      configfile_path = File.expand_path('../../../', __FILE__)
+      config = YAML.load_file("#{configfile_path}/config.yml")
+
+       a= RSS::Maker.make("2.0") do |maker|
+        maker.channel.about = config['my_config_data']['about']
         maker.channel.title = @title
         maker.channel.description = @title
-        maker.channel.link = "http://tomch.net/railwayEvents/"
+        maker.channel.link = config['my_config_data']['link']
         for seed in (@feed_seeds.feed_seeds)
           item = maker.items.new_item
           item.link = seed[:event_URL]
