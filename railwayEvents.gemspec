@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'railwayEvents/version'
+require 'railway-events/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "railwayEvents"
@@ -30,5 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "sinatra", "~> 1.4"
   spec.add_development_dependency "haml", "~> 4.0"
-  spec.add_development_dependency "feedbag", "~> 0.9"
+#  spec.add_development_dependency "rspec", "~> 3.4"
 end
