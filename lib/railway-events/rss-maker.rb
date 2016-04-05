@@ -34,7 +34,7 @@ module RssMaker
           event_date = $3
           tmp = OpenURI.open_uri(event_URL)
           File.open(tmp.open) do |f|
-            f.read =~ /<p class="content-text".+?>(.+?)<\/p>/
+            f.read.force_encoding('UTF-8') =~ /<p class="content-text".+?>(.+?)<\/p>/
             @event_description = $1
           end
 
